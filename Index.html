@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sat Norte de Minas Gerais</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen p-4">
+    <div class="bg-white rounded-xl shadow-lg p-6 max-w-4xl w-full text-center">
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Sat Norte de Minas Gerais</h1>
+        <p class="text-gray-600 mb-8">
+            Visualização diária por satélite da sua região.
+        </p>
+        
+        <div class="relative w-full h-auto overflow-hidden rounded-lg shadow-md mb-6">
+            <img id="satellite-image" src="/api/image.jpg" alt="Imagem de satélite" 
+                 class="w-full h-auto rounded-lg">
+        </div>
+        
+        <div class="text-gray-500 text-sm">
+            Fonte dos dados: NASA Global Imagery Browse Services (GIBS)
+        </div>
+    </div>
+</body>
+</html>
