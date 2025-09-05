@@ -5,7 +5,6 @@ from pathlib import Path
 from datetime import datetime
 import requests
 from fastapi import FastAPI, Response
-from fastapi.staticfiles import StaticFiles
 
 app = FastAPI(title="Sat Norte de Minas Gerais")
 
@@ -13,7 +12,6 @@ app = FastAPI(title="Sat Norte de Minas Gerais")
 # A linha abaixo usa um caminho absoluto para evitar erros de diretório na Render
 BASE_DIR = Path(__file__).parent
 DATA_DIR = BASE_DIR / "data"
-FRONTEND_DIR = BASE_DIR / "frontend"
 DATA_DIR.mkdir(exist_ok=True)
 
 # ---------------- Constantes de Localização ----------------
@@ -90,13 +88,3 @@ def get_image():
         return Response(content=content, media_type="image/jpeg")
     else:
         return {"error": "Imagem não encontrada."}
-
-# ---------------- Frontend (Página Web) ----------------
-# A forma mais robusta de montar a pasta estática
-app.mount("/", StaticFiles(directory=FRONTEND_DIR, html=True), name="frontend")
-
-# ---------------- Execução do Servidor ----------------
-if __name__ == "__main__":
-    import uvicorn
-    port = int(os.environ.get("PORT", 0)) or 8000
-    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=False)
